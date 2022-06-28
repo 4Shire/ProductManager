@@ -2,10 +2,7 @@ package ru.netology.manager;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import ru.netology.domain.Book;
 import ru.netology.domain.Product;
-import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 
@@ -34,27 +31,30 @@ public class ProductManager {
         return result;
     }
 
-    public boolean matches(Product item, String search) {
-        if (item instanceof Book) { // если в параметре product лежит объект класса Book
-            Book book = (Book) item; // положем его в переменную типа Book чтобы пользоваться методами класса Book
-            if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
-                return true;
-            }
-            if (book.getName().contains(search)) {
-                return true;
-            }
-            return false;
-        }
-        if (item instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) item;
-            if (smartphone.getManufacturer().contains(search)) {
-                return true;
-            }
-            if (smartphone.getName().contains(search)) {
-                return true;
-            }
-            return false;
-        }
-        return false;
+    //public boolean matches(Product item, String search) {
+    //   if (item instanceof Book) { // если в параметре product лежит объект класса Book
+    //Book book = (Book) item; // положем его в переменную типа Book чтобы пользоваться методами класса Book
+    //       if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
+    //           return true;
+    //      }
+    //       if (book.getName().contains(search)) {
+    //           return true;
+    //       }
+    //       return false;
+    //   }
+    //   if (item instanceof Smartphone) {
+    //      Smartphone smartphone = (Smartphone) item;
+    //      if (smartphone.getManufacturer().contains(search)) {
+    //          return true;
+    //      }
+    //      if (smartphone.getName().contains(search)) {
+    //          return true;
+    //      }
+    //      return false;
+    //  }
+    // return false;
+    //}
+    public boolean matches(Product product, String search) {
+        return product.getName().contains(search);
     }
 }
